@@ -27,6 +27,7 @@ var chartGroup = svg.append("g")
 
 //Importing our Data
         d3.csv("assets/data/data.csv").then(function(journalismData) {
+  
         journalismData.forEach(function(data) {
             data.poverty = +data.poverty;
             data.healthcare = +data.healthcare;
@@ -49,7 +50,8 @@ var yLinearScale = d3.scaleLinear()
 .range([height, 0]);
 //return yLinearScale;
 
-/// function used for updating xAxis var and yAxis upon click on axis label
+
+///updating our axis
 var bottomAxis = d3.axisBottom(xLinearScale)
 var leftAxis= d3.axisLeft(yLinearScale)
 
@@ -73,8 +75,8 @@ chartGroup.selectAll("circle").data(journalismData).enter().append("circle")
 //Appending x axis title
 chartGroup.append("text")
 .attr("transform", `translate(${height/2}, ${height + margin.top + 20})`)
-.classed("dow-text text", true)
-.text("In Poverty %");
+.classed("dow-text", true)
+.text("In Poverty (%)");
 
  //Appending y axis title
  chartGroup.append("text")
